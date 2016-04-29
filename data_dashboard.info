@@ -1,0 +1,3 @@
+name = Data Dashboard
+description = Module to display hexagonal visualisation blocks for example datasets.
+core = 7.x

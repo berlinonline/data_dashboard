@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function data_dashboard_block_info() {
+  error_log("data_dashboard_block_info");
+  $blocks['data_dashboard'] = array(
+    'info' => t('Data Dashboard'),
+    'cache' => DRUPAL_CACHE_PER_ROLE,
+  );
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_view().
+ */
+function data_dashboard_block_view($delta='') {
+  error_log("data_dashboard_block_view");
+  $module_path = drupal_get_path('module', 'data_dashboard');
+  $css_options = array(
+    'group' => CSS_DEFAULT, 
+    'type' => 'file', 
+    'every_page' => FALSE
+  );
+  $js_options = array(
+    'group' => JS_DEFAULT, 
+    'type' => 'file', 
+    'every_page' => FALSE
+  );
+
+  drupal_add_css($module_path . '/css/app.css', $css_options);
+  drupal_add_js($module_path . '/lib/jquery.waitforimages.min.js', $js_options);
+  drupal_add_js($module_path . '/lib/idle.js', $js_options);
+  drupal_add_js($module_path . '/strings/de-DE/i18n.js', $js_options);
+  drupal_add_js($module_path . '/js/config.js', $js_options);
+  drupal_add_js($module_path . '/js/app.js', $js_options);
+  drupal_add_js($module_path . '/js/buildedit.js', $js_options);
+  drupal_add_js($module_path . '/js/buildlist.js', $js_options);
+
+  drupal_add_js(array('data_dashboard' => array('basePath' => $module_path . '/')), 'setting');
+
+  $block = array();
+  
+  switch($delta) {
+    case 'data_dashboard' :
+      $block['content'] = dashboard_container();
+      break;
+  }
+  
+  return $block;
+}
+
+
+function dashboard_container() {
+  error_log("dashboard_container");
+  $block = array();
+
+
+  // Block output in HTML with div wrapper
+  $block = array(
+    'message' => array(
+      '#type' => 'markup',
+      '#markup' => '<div id="board"><section class="endcard"></section></div>',
+    ),
+  );
+
+  return $block;
+}
