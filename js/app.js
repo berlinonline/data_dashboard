@@ -139,9 +139,10 @@
 			str = '',
 			cardwrapper = null;
 
-		button += '<button type="button" class="btn btn-primary btn-flipp"><i class="dashboardicon">&#xe805;</i></button>';
+		// button += '<button type="button" class="btn btn-primary btn-flipp"><i class="dashboardicon">&#xe805;</i></button>';
 		if ('' !== card.back.url) {
-			button += '<button type="button" class="btn btn-primary btn-data" data-url="' + card.back.url + '"><i class="dashboardicon">&#xe809;</i></button>';
+			// button += '<button type="button" class="btn btn-primary btn-data" data-url="' + card.back.url + '"><i class="dashboardicon">&#xe809;</i></button>';
+			button += '<a href="' + card.back.url + '"><i class="dashboardicon large">&#xe809;</i></a>';
 		}
 		button += '</div>';
 
@@ -153,7 +154,7 @@
 		}
 		if ('' !== card.back.image) {
 			card.back.css = 'transparent';
-			card.back.text = '<img src="' + config.basePath + card.back.image + '" class="background">';
+			card.back.text = '<img src="' + config.basePath + card.back.image + '" class="background"><div style="' + card.back.style + '">' + card.back.text + '</div>' + button;
 		} else {
 			card.back.text = '<div style="' + card.back.style + '">' + card.back.text + '</div>' + button;
 		}
@@ -173,9 +174,9 @@
 				$(this).parent().toggleClass('flipped');
 			}
 		});
-		$('.back .btn-flipp', cardwrapper).click(function () {
+		$('.back', cardwrapper).click(function () {
 			if (!$('body').hasClass('build')) {
-				$(this).parent().parent().parent().toggleClass('flipped');
+				$(this).parent().toggleClass('flipped');
 			}
 		});
 		$('.back .btn-data', cardwrapper).click(function () {
