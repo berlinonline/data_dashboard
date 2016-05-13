@@ -26,6 +26,7 @@
 	},
 	"back": {
 		"text": "Der aktuelle Stand der Haushaltswirtschaft im laufenden Haushaltsjahr im Bezirk Lichtenberg:",
+		"background": "img/bo_background.svg",
 		"color": "#000000",
 		"cssClass": ""
 	}

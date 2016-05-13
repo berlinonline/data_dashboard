@@ -27,6 +27,7 @@
 	"back": {
 		"text": "Es wird niemals langweilig auf den Berliner und Brandenburger Straßen- und Volksfesten.",
 		"color": "#000000",
+		"background": "img/bo_background.svg",
 		"cssClass": ""
 	}
 }

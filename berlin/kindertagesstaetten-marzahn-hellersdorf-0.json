@@ -27,6 +27,7 @@
 	"back": {
 		"text": "Natürlich gibt es mehr Plätze in Berlin. Diese Zahlen stammen aus Marzahn-Hellersdorf.",
 		"color": "#000000",
+		"background": "img/bo_background.svg",
 		"cssClass": ""
 	}
 }

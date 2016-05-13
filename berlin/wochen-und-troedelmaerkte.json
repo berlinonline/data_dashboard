@@ -27,6 +27,7 @@
 	"back": {
 		"text": "Fast jeden Tag ist irgendwo in Berlin Markt. Aber auch Märkte aus Brandenburg findet man unter:",
 		"color": "#000000",
+		"background": "img/bo_background.svg",
 		"cssClass": ""
 	}
 }

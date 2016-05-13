@@ -27,6 +27,7 @@
 	"back": {
 		"text": "Deinen Beitrag zum Umweltschutz kannst du im Bezirk Charlottenburg-Wilmersdorf leisten.",
 		"color": "#000000",
+		"background": "img/bo_background.svg",
 		"cssClass": ""
 	}
 }
