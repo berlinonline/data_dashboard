@@ -13,18 +13,8 @@
 	"cards": [
 		"berlin/standorte-von-altglascontainern-auf-oeffentlichem-strassenland-charlottenburg-1.json",
 		"berlin/kamerale-monatsdaten-bezirk-lichtenberg-2016.json",
-		"berlin/orte-fuer-kinder-jugend-und-familie.json",
-		"berlin/traeger-von-kindertagesstaetten-marzahn-hellersdorf.json",
 		"berlin/kindertagesstaetten-marzahn-hellersdorf-0.json",
-		"berlin/berliner-weihnachtsmaerkte-0.json",
 		"berlin/wochen-und-troedelmaerkte.json",
-		"berlin/strassen-und-volksfeste.json",
-
-		"berlin/doppelhaushalt-20162017.json",
-		"berlin/angebote-zur-unterstuetzung-von-fluechtlingen.json",
-		"berlin/bezirksamtsbeschluesse.json",
-		"berlin/angebote-fuer-kinder-jugend-und-familie.json",
-		"berlin/kamerale-monatsdaten-bezirk-lichtenberg-2015.json",
-		"berlin/haushaltsplan-des-bezirksamtes-lichtenberg-von-berlin-fuer-20162017.json"
+		"berlin/strassen-und-volksfeste.json"
 	]
 }
