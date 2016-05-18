@@ -1,0 +1,128 @@
+<?php
+
+function data_dashboard_enable() {
+    // drupal_set_message($message = t('The data_dashboard module was successfully enabled.'), $type = 'status');
+
+    _data_dashboard_create_datenwabe();
+    _data_dashboard_field_dataset();
+
+    // "text": "Es wird niemals langweilig auf den Berliner und Brandenburger Straßen- und Volksfesten.",
+    // "color": "#000000",
+    // "background": "img/bo_background.svg",
+    // "cssClass": ""
+    _data_dashboard_field_textfield("front_text_top", "Front Text oben");
+    _data_dashboard_field_textfield("front_text_bottom", "Front Text unten");
+    _data_dashboard_field_textfield("front_value", "Front Wert");
+    _data_dashboard_field_textfield("front_unit", "Front Maßeinheit");
+    _data_dashboard_field_textfield("front_change_per_day", "Front Change-per-day");
+    _data_dashboard_field_textfield("front_format", "Front format");
+    _data_dashboard_field_textfield("front_background", "Front Hintergrund");
+    _data_dashboard_field_textfield("front_color", "Front Farbe");
+
+    _data_dashboard_field_textfield("back_text", "Back Text");
+    _data_dashboard_field_textfield("back_css_class", "Back CSS Klasse");
+    _data_dashboard_field_textfield("back_background", "Back Hintergrund");
+    _data_dashboard_field_textfield("back_color", "Back Farbe");
+
+}
+
+function _data_dashboard_create_datenwabe() {
+    $type_name = "datenwabe";
+
+    if ( in_array( $type_name, node_type_get_names() ) ) {
+        return;
+    }
+
+    $type = array(
+        'type' => $type_name,
+        'name' => st( 'Datenwabe' ),
+        'base' => 'node_content',
+        'description' => st( 'Datenwabe als Datensatz-Preview im Data Dashboard.' ),
+        'custom' => 1,
+        'modified' => 1,
+        'locked' => 0,
+    );
+
+    $type = node_type_set_defaults( $type );
+    node_type_save( $type );
+
+}
+
+function _data_dashboard_field_dataset() {
+
+    $field_name = "datenwabe_dataset";
+
+    if ( field_info_field( $field_name ) ) {
+        return;
+    }
+
+    $field = array(
+        'field_name' => $field_name,
+        'type' => 'node_reference',
+    );
+
+    $field = field_create_field( $field );
+
+    $instance = array(
+        'field_name' => $field[ 'field_name' ],
+        'entity_type' => 'node',
+        'bundle' => 'datenwabe',
+        'description' => 'Der Datensatz, der in dieser Wabe angezeigt wird.',
+        'label' => 'Datensatz',
+        'widget' => array(
+            'type' => 'node_reference_autocomplete',
+        ),
+        'settings' => array(
+            'referenceable_types' => array(
+                'ckan_package'
+            ),
+        ),
+    );
+
+    field_create_instance($instance);
+
+}
+
+function _data_dashboard_field_textfield($machine_name, $label, $description=NULL) {
+    $field_name = "datenwabe_" . $machine_name ;
+
+    if ( field_info_field( $field_name ) ) {
+        return;
+    }
+
+    $field = array(
+        'field_name' => $field_name,
+        'type' => 'text',
+    );
+
+    $field = field_create_field( $field );
+
+    $instance = array(
+        'field_name' => $field[ 'field_name' ],
+        'entity_type' => 'node',
+        'bundle' => 'datenwabe',
+        'description' => $description,
+        'label' => $label,
+        'widget' => array(
+            'type' => 'textfield',
+        ),
+    );
+
+    field_create_instance($instance);
+}
+
+    // "front": {
+    //     "textTop": "Dieses Jahr gibt es",
+    //     "textBottom": "Straßen- und Volksfeste",
+    //     "value": "352",
+    //     "unit": "",
+    //     "changePerDay": "",
+    //     "format": "string",
+    //     "background": "img/market.svg",
+    //     "color": "#ffffff"
+    // },
+    // "back": {
+    //     "text": "Es wird niemals langweilig auf den Berliner und Brandenburger Straßen- und Volksfesten.",
+    //     "color": "#000000",
+    //     "background": "img/bo_background.svg",
+    //     "cssClass": ""
