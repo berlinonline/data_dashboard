@@ -270,7 +270,11 @@
 		}
 
 		if ((typeof cityConfig.cards !== 'undefined') && (config.loaded < cityConfig.cards.length)) {
-			var url = config.basePath + cityConfig.cards[config.loaded];
+			// the following check allows absolute and relative URLs
+			var url = cityConfig.cards[config.loaded];
+			if (url[0] != '/') {
+				url = config.basePath + url;
+			}
 			$.ajax(url)
 				.done(function (json) {
 					// var data = $.parseJSON(json);
