@@ -1,10 +1,14 @@
 <?php
 
+
+/** ---------------------------------------
+* DASHBOARD BLOCK
+------------------------------------------- */
+
 /**
  * Implements hook_block_info().
  */
 function data_dashboard_block_info() {
-  error_log("data_dashboard_block_info");
   $blocks['data_dashboard'] = array(
     'info' => t('Data Dashboard'),
     'cache' => DRUPAL_CACHE_PER_ROLE,
@@ -16,7 +20,6 @@ function data_dashboard_block_info() {
  * Implements hook_block_view().
  */
 function data_dashboard_block_view($delta='') {
-  error_log("data_dashboard_block_view");
   $module_path = drupal_get_path('module', 'data_dashboard');
   $css_options = array(
     'group' => CSS_DEFAULT, 
@@ -44,7 +47,7 @@ function data_dashboard_block_view($delta='') {
   
   switch($delta) {
     case 'data_dashboard' :
-      $block['content'] = dashboard_container();
+      $block['content'] = data_dashboard_container();
       break;
   }
   
@@ -52,8 +55,7 @@ function data_dashboard_block_view($delta='') {
 }
 
 
-function dashboard_container() {
-  error_log("dashboard_container");
+function data_dashboard_container() {
   $block = array();
 
 
@@ -66,4 +68,53 @@ function dashboard_container() {
   );
 
   return $block;
+}
+
+/**********************************
+* JSON Export
+************************************/
+
+function data_dashboard_menu() {
+  error_log("data_dashboard_menu");
+  $items['wabe/%/json'] = array(
+    'access callback' => true , // available to all
+    'page callback' => 'data_dashboard_export_json' ,
+    'page arguments' => array(1) ,
+    'delivery callback' => 'drupal_json_output' ,
+  );
+  return $items;
+}
+
+function data_dashboard_export_json($wabe) {
+  $alias = "wabe/$wabe";
+  $path = drupal_lookup_path("source", $alias);
+  $node = menu_get_object("node", 1, $path);
+
+  $datensatz_id = $node->datenwabe_dataset['und'][0]['nid'];
+  $datensatz_path = drupal_get_path_alias("node/" . $datensatz_id);
+
+  $result = array();
+  
+  $result['portal'] = array();
+  $result['portal']['title'] = $node->title;
+  $result['portal']['url'] = $datensatz_path;
+
+  $result['front'] = array();
+  $result['front']['textTop'] = $node->datenwabe_front_text_top['und'][0]['value'];
+  $result['front']['textBottom'] = $node->datenwabe_front_text_bottom['und'][0]['value'];
+  $result['front']['value'] = $node->datenwabe_front_value['und'][0]['value'];
+  $result['front']['unit'] = $node->datenwabe_front_unit['und'][0]['value'];
+  $result['front']['changePerDay'] = $node->datenwabe_front_change_per_day['und'][0]['value'];
+  $result['front']['format'] = $node->datenwabe_front_format['und'][0]['value'];
+  $result['front']['background'] = $node->datenwabe_front_background['und'][0]['value'];
+  $result['front']['color'] = $node->datenwabe_front_color['und'][0]['value'];
+
+
+  $result['back'] = array();
+  $result['back']['text'] = $node->datenwabe_back_text['und'][0]['value'];
+  $result['back']['color'] = $node->datenwabe_back_color['und'][0]['value'];
+  $result['back']['cssClass'] = $node->datenwabe_back_css_class['und'][0]['value'];
+  $result['back']['background'] = $node->datenwabe_back_background['und'][0]['value'];
+
+  return $result;
 }
