@@ -273,9 +273,9 @@
 			var url = config.basePath + cityConfig.cards[config.loaded];
 			$.ajax(url)
 				.done(function (json) {
-					// var data = $.parseJSON(json);
-					// createCard(data);
-					createCard(json);
+					var data = $.parseJSON(json);
+					createCard(data);
+					//createCard(json);
 				})
 				.fail(function (jqXHR, textStatus) {
 					if ('parsererror' === textStatus) {
@@ -393,7 +393,7 @@
 		$.ajax(url)
 			.done(function (json) {
 				// strange: why do we not have to do $.parseJSON(json)?
-				cityConfig = json;
+				cityConfig = $.parseJSON(json);
 			})
 			.fail(function (jqXHR, textStatus) {
 				if ('parsererror' === textStatus) {
