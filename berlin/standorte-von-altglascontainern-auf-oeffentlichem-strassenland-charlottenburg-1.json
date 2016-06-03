@@ -15,8 +15,8 @@
 		"updated": "2016-02-11"
 	},
 	"front": {
-		"textTop": "Recycle dein Glas! Nutze",
-		"textBottom": "Altglascontainer",
+		"textTop": "Glas recyclen in ",
+		"textBottom": "Altglascontainern",
 		"value": "348",
 		"unit": "",
 		"changePerDay": "",
@@ -25,7 +25,7 @@
 		"color": "#ffffff"
 	},
 	"back": {
-		"text": "Deinen Beitrag zum Umweltschutz kannst du im Bezirk Charlottenburg-Wilmersdorf leisten.",
+		"text": "Charlottenburg-Wilmersdorf stellt Daten über alle Glascontainer im Bezirk bereit.",
 		"color": "#000000",
 		"background": "img/bo_background.svg",
 		"cssClass": ""

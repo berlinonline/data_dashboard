@@ -15,7 +15,7 @@
 		"updated": "2016-02-02"
 	},
 	"front": {
-		"textTop": "Schlendern sie über",
+		"textTop": "Schlendern Sie über",
 		"textBottom": "Wochen- und Trödelmärkte",
 		"value": "184",
 		"unit": "",
@@ -25,7 +25,7 @@
 		"color": "#ffffff"
 	},
 	"back": {
-		"text": "Fast jeden Tag ist irgendwo in Berlin Markt. Aber auch Märkte aus Brandenburg findet man unter:",
+		"text": "In Berlin ist fast jeden Tag irgendwo Markt. Aber auch Märkte aus Brandenburg findet man unter:",
 		"color": "#000000",
 		"background": "img/bo_background.svg",
 		"cssClass": ""
