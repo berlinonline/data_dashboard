@@ -4,7 +4,6 @@
  * Implements hook_block_info().
  */
 function data_dashboard_block_info() {
-  error_log("data_dashboard_block_info");
   $blocks['data_dashboard'] = array(
     'info' => t('Data Dashboard'),
     'cache' => DRUPAL_CACHE_PER_ROLE,
@@ -16,7 +15,6 @@ function data_dashboard_block_info() {
  * Implements hook_block_view().
  */
 function data_dashboard_block_view($delta='') {
-  error_log("data_dashboard_block_view");
   $module_path = drupal_get_path('module', 'data_dashboard');
   $css_options = array(
     'group' => CSS_DEFAULT, 
@@ -53,7 +51,6 @@ function data_dashboard_block_view($delta='') {
 
 
 function dashboard_container() {
-  error_log("dashboard_container");
   $block = array();
 
 
