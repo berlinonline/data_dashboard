@@ -6,23 +6,59 @@ function data_dashboard_enable() {
     _data_dashboard_create_datenwabe();
     _data_dashboard_field_dataset();
 
-    // "text": "Es wird niemals langweilig auf den Berliner und Brandenburger Straßen- und Volksfesten.",
-    // "color": "#000000",
-    // "background": "img/bo_background.svg",
-    // "cssClass": ""
-    _data_dashboard_field_textfield("front_text_top", "Front Text oben");
-    _data_dashboard_field_textfield("front_text_bottom", "Front Text unten");
-    _data_dashboard_field_textfield("front_value", "Front Wert");
-    _data_dashboard_field_textfield("front_unit", "Front Maßeinheit");
-    _data_dashboard_field_textfield("front_change_per_day", "Front Change-per-day");
-    _data_dashboard_field_textfield("front_format", "Front format");
-    _data_dashboard_field_textfield("front_background", "Front Hintergrund");
-    _data_dashboard_field_textfield("front_color", "Front Farbe");
+    _data_dashboard_create_field(array(
+        'machine_name' => "front_text_top",
+        'label' => "Front Text oben")
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_text_bottom',
+        'label' => 'Front Text unten')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_value',
+        'label' => 'Front Wert')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_unit',
+        'label' => 'Front Maßeinheit')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_change_per_day',
+        'label' => 'Front Change-per-day')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_format',
+        'label' => 'Front format')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_background',
+        'label' => 'Front Hintergrund')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'front_color',
+        'label' => 'Front Farbe')
+    );
 
-    _data_dashboard_field_textfield("back_text", "Back Text");
-    _data_dashboard_field_textfield("back_css_class", "Back CSS Klasse");
-    _data_dashboard_field_textfield("back_background", "Back Hintergrund");
-    _data_dashboard_field_textfield("back_color", "Back Farbe");
+    _data_dashboard_create_field(array(
+        'machine_name' => 'back_text',
+        'label' => 'Back Text',
+        'widget' => array(
+            'type' => 'textfield',
+            'settings' => array('size' => 80)
+        ))
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'back_css_class',
+        'label' => 'Back CSS Klasse')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'back_background',
+        'label' => 'Back Hintergrund')
+    );
+    _data_dashboard_create_field(array(
+        'machine_name' => 'back_color',
+        'label' => 'Back Farbe')
+    );
 
 }
 
@@ -83,7 +119,14 @@ function _data_dashboard_field_dataset() {
 
 }
 
-function _data_dashboard_field_textfield($machine_name, $label, $description=NULL) {
+function _data_dashboard_create_field($conf) {
+    if (isset($conf['machine_name'])) {
+        $machine_name = $conf['machine_name'];
+    }
+    if (isset($conf['label'])) {
+        $label = $conf['label'];
+    }
+
     $field_name = "datenwabe_" . $machine_name ;
 
     if ( field_info_field( $field_name ) ) {
@@ -101,28 +144,13 @@ function _data_dashboard_field_textfield($machine_name, $label, $description=NUL
         'field_name' => $field[ 'field_name' ],
         'entity_type' => 'node',
         'bundle' => 'datenwabe',
-        'description' => $description,
-        'label' => $label,
-        'widget' => array(
-            'type' => 'textfield',
-        ),
+        'label' => $label
     );
+    if (isset($conf['widget'])) {
+        error_log("yay!");
+        $instance['widget'] = $conf['widget'];
+    }
 
     field_create_instance($instance);
 }
 
-    // "front": {
-    //     "textTop": "Dieses Jahr gibt es",
-    //     "textBottom": "Straßen- und Volksfeste",
-    //     "value": "352",
-    //     "unit": "",
-    //     "changePerDay": "",
-    //     "format": "string",
-    //     "background": "img/market.svg",
-    //     "color": "#ffffff"
-    // },
-    // "back": {
-    //     "text": "Es wird niemals langweilig auf den Berliner und Brandenburger Straßen- und Volksfesten.",
-    //     "color": "#000000",
-    //     "background": "img/bo_background.svg",
-    //     "cssClass": ""

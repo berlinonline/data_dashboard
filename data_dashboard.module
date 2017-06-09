@@ -70,6 +70,33 @@ function data_dashboard_container() {
   return $block;
 }
 
+/**
+ * Implements hook_block_configure().
+ */
+function data_dashboard_block_configure($delta = '') {
+  $form = array();
+  switch ($delta) {
+    case 'data_dashboard':
+      $form['waben_list'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Angezeigte Waben'),
+        '#default_value' => variable_get('waben_list'),
+      );
+      break;
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function data_dashboard_block_save($delta = '', $edit = array()) {
+  switch ($delta) {
+    case 'data_dashboard':   
+      variable_set('waben_list', $edit['waben_list']);
+      break;
+  }
+}
 /**********************************
 * JSON Export
 ************************************/
