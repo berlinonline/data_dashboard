@@ -4,7 +4,7 @@
 		"city": "Berlin"
 	},
 	"portal": {
-		"url": "http://daten.berlin.de/datensaetze/wochen-und-tr%C3%B6delm%C3%A4rkte",
+		"url": "http://daten.berlin.de/datensaetze/wochen-und-tr%C3%B6delm%C3%A4rkte-0",
 		"title": "Wochen- und Trödelmärkte",
 		"description": "Hier finden Sie die Berliner und Brandenburger Wochen- und    Trödelmärkte 2015",
 		"license": "Creative Commons Namensnennung Lizenz",
@@ -12,12 +12,12 @@
 		"attribution": "Senatsverwaltung für Wirtschaft, Technologie und Forschung",
 		"author": "ralf.eberhardt@senwtf.berlin.de",
 		"created": "2014-04-15",
-		"updated": "2016-02-02"
+		"updated": "2018-03-08"
 	},
 	"front": {
 		"textTop": "Schlendern Sie über",
 		"textBottom": "Wochen- und Trödelmärkte",
-		"value": "184",
+		"value": "185",
 		"unit": "",
 		"changePerDay": "",
 		"format": "int",
