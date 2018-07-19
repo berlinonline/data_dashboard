@@ -272,8 +272,9 @@
 		if ((typeof cityConfig.cards !== 'undefined') && (config.loaded < cityConfig.cards.length)) {
 			var url = config.basePath + cityConfig.cards[config.loaded];
 			$.ajax(url, { datatype: "json" })
-				.done(function (json) {
-					createCard(json);
+				.done(function (data) {
+					if ((typeof data) == "string") { data = $.parseJSON(data); }
+					createCard(data);
 				})
 				.fail(function (jqXHR, textStatus) {
 					if ('parsererror' === textStatus) {
@@ -389,8 +390,9 @@
 
 		var url = config.basePath + 'berlin/cityConfig.json';
 		$.ajax(url, { datatype: "json" })
-			.done(function (json) {
-				cityConfig = json;
+			.done(function (data) {
+				if ((typeof data) == "string") { data = $.parseJSON(data); }
+				cityConfig = data;
 			})
 			.fail(function (jqXHR, textStatus) {
 				if ('parsererror' === textStatus) {
