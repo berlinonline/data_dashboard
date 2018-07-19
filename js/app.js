@@ -271,11 +271,9 @@
 
 		if ((typeof cityConfig.cards !== 'undefined') && (config.loaded < cityConfig.cards.length)) {
 			var url = config.basePath + cityConfig.cards[config.loaded];
-			$.ajax(url)
+			$.ajax(url, { datatype: "json" })
 				.done(function (json) {
-					var data = $.parseJSON(json);
-					createCard(data);
-					//createCard(json);
+					createCard(json);
 				})
 				.fail(function (jqXHR, textStatus) {
 					if ('parsererror' === textStatus) {
@@ -390,10 +388,9 @@
 		cityConfig = {};
 
 		var url = config.basePath + 'berlin/cityConfig.json';
-		$.ajax(url)
+		$.ajax(url, { datatype: "json" })
 			.done(function (json) {
-				// strange: why do we not have to do $.parseJSON(json)?
-				cityConfig = $.parseJSON(json);
+				cityConfig = json;
 			})
 			.fail(function (jqXHR, textStatus) {
 				if ('parsererror' === textStatus) {
