@@ -82,19 +82,6 @@
 	text-decoration: none;
 }
 
-/* body {
-	background: no-repeat center center fixed;
-	-webkit-background-size: cover;
-	   -moz-background-size: cover;
-	     -o-background-size: cover;
-	        background-size: cover;
-	color: #fff;
-	font-family: 'judsonmedium', Arial, sans-serif;
-	font-size: 12pt;
-	margin: 0;
-	padding-top: 50px;
-} */
-
 body.build {
 	background: #2c71b8 url('../img/blueprintbackground.svg') !important;
 }
