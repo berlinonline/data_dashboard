@@ -82,7 +82,7 @@
 	text-decoration: none;
 }
 
-body {
+/* body {
 	background: no-repeat center center fixed;
 	-webkit-background-size: cover;
 	   -moz-background-size: cover;
@@ -93,7 +93,7 @@ body {
 	font-size: 12pt;
 	margin: 0;
 	padding-top: 50px;
-}
+} */
 
 body.build {
 	background: #2c71b8 url('../img/blueprintbackground.svg') !important;
